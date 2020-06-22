@@ -1,21 +1,49 @@
 body {
-    margin: 0;
+    margin: auto;
     font-family: sans-serif;
-    background-color: #dedede;
+    background-color: #ffffff;
 }
 
 header {
-    height: 10px;
+    height: 100px;
+    padding-top: 0.1rem;
     position: sticky;
     top: 0;
     background-color: #3f51b5;
+    color: white;
+}
+
+#titulo {
+    font-size: 30px;
+    padding-left: 45%;
+    margin: auto;
+    padding-top: 8px;
+}
+
+p {
+    font-size: 20px;
+    padding-left: 43%;
+}
+
+img {
+    padding-left: 20%;
+    padding-top: 20px;
+    float: left;
 }
 
 footer {
-    height: 10px;
-    position: sticky;
-    bottom: 0px;
+    bottom: 0;
+    height: 70px;
+    /* position: fixed; */
+    width: 100%;
     background-color: #3f51b5;
+    color: white;
+}
+
+#rodape {
+    font-size: 15px;
+    padding-top: 25px;
+    padding-left: 40%;
 }
 
 main {
@@ -30,10 +58,11 @@ form {
     margin: 20px 0;
     border-radius: 5px;
     border: 1px solid #b8b8b8;
-    background-color: white;
+    background-color: #dedede;
 }
 
 button {
+    font-family: 'Roboto', sans-serif;
     background-color: #3f51b5;
     border: none;
     color: white;
@@ -61,7 +90,7 @@ input {
 }
 
 section {
-    background-color: white;
+    background-color: #dedede;
     padding: 10px;
     margin: 20px 0;
     border: 1px solid #b8b8b8;
@@ -69,6 +98,43 @@ section {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    -webkit-animation: form 3s ease-in-out;
+    -moz-animation: form 3s ease-in-out;
+    -o-animation: form 3s ease-in-out;
+    animation: form 3s ease-in-out;
+}
+
+@-webkit-keyframes form {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes form {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-o-keyframes form {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes form {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 section button {

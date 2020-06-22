@@ -2,7 +2,6 @@ const MATRICULA = 110683;
 let totalRecursos = -1;
 
 function comentariosToDom(comentarios) {
-    console.log(comentarios);
     return appendElements(
         createDOMElement('div'),
         comentarios.map(comentario =>
@@ -26,7 +25,7 @@ function topicoToDom(topico) {
             ]),
             appendElements(createDOMElement('form'), [
                 createDOMElement('input', {
-                    placeHolder: 'adicione um comentário...'
+                    placeHolder: 'Adicione um comentário...'
                 }),
                 createDOMElement('button', {
                     textContent: 'enviar',

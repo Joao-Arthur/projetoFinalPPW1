@@ -8,14 +8,25 @@
             name="author"
             content="João Arthur Lothamer Fernandes, Iasmin Corrêa"
         />
-        <title>Projeto final de ppw</title>
-        <!--colocar o icone-->
-        <meta name="description" content="projeto final de ppw" />
-        <meta name="keywords" content="HTML, JS, API, Projeto, PPW" />
+        <meta
+            name="description"
+            content="projeto final de programação para web"
+        />
+        <meta name="keywords" content="HTML, CSS, JS, API, Projeto, PPW" />
+        <title>Mini-Fórum</title>
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="projetoFinal.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <header></header>
+        <header>
+            <img src="img/forum.png" alt="imagem de conversa" />
+            <h1 id="titulo">Mini-Fórum</h1>
+            <p>Compartilhe suas ideias!</p>
+        </header>
         <main>
             <div id="adicionarTopico">
                 <form id="formulario">
@@ -30,7 +41,9 @@
             </div>
             <div id="publicacoes"></div>
         </main>
-        <footer></footer>
+        <footer>
+            <p id="rodape">Desenvolvido by João Arthur e Iasmin Corrêa</p>
+        </footer>
         <script src="DOMFunctions.js"></script>
         <script src="APIRamon.js"></script>
         <script src="Comentario.js"></script>
