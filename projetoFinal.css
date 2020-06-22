@@ -1,5 +1,5 @@
 body {
-    margin: auto;
+    margin: 0;
     font-family: sans-serif;
     background-color: #ffffff;
 }
@@ -33,17 +33,14 @@ img {
 
 footer {
     bottom: 0;
-    height: 70px;
-    /* position: fixed; */
+    height: 40px;
     width: 100%;
     background-color: #3f51b5;
     color: white;
 }
 
-#rodape {
+footer p {
     font-size: 15px;
-    padding-top: 25px;
-    padding-left: 40%;
 }
 
 main {
