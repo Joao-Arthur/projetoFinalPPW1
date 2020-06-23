@@ -1,3 +1,12 @@
+@keyframes opacidade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 html {
     height: 100%;
 }
@@ -5,7 +14,7 @@ html {
 body {
     margin: 0;
     font-family: sans-serif;
-    background-color: #ffffff;
+    background-color: #dedede;
     position: relative;
     min-height: 100%;
 }
@@ -28,13 +37,7 @@ header {
 
 p {
     font-size: 20px;
-    padding-left: 43%;
-}
-
-img {
-    padding-left: 20%;
-    padding-top: 20px;
-    float: left;
+    margin: 0;
 }
 
 footer {
@@ -44,7 +47,6 @@ footer {
     bottom: 0;
     width: 100%;
     height: 60px;
-    background: #6cf;
 }
 
 footer p {
@@ -56,6 +58,11 @@ main {
     margin: auto;
 }
 
+img {
+    height: fit-content;
+    width: fit-content;
+}
+
 form {
     display: flex;
     justify-content: center;
@@ -63,7 +70,7 @@ form {
     margin: 20px 0;
     border-radius: 5px;
     border: 1px solid #b8b8b8;
-    background-color: #dedede;
+    background-color: white;
 }
 
 button {
@@ -95,7 +102,7 @@ input {
 }
 
 section {
-    background-color: #dedede;
+    background-color: white;
     padding: 10px;
     margin: 20px 0;
     border: 1px solid #b8b8b8;
@@ -103,43 +110,7 @@ section {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    -webkit-animation: form 3s ease-in-out;
-    -moz-animation: form 3s ease-in-out;
-    -o-animation: form 3s ease-in-out;
-    animation: form 3s ease-in-out;
-}
-
-@-webkit-keyframes form {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@-moz-keyframes form {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@-o-keyframes form {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes form {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    animation: opacidade 0.2s ease-in-out;
 }
 
 section button {
@@ -153,4 +124,13 @@ section form {
     border: 0;
     padding: 0;
     margin: 0;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+.headerTitle {
+    display: flex;
+    flex-direction: column;
 }
