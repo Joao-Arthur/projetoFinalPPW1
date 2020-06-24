@@ -45,7 +45,7 @@ section {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    animation: opacidade 0.2s ease-in-out;
+    animation: opacidade 0.3s ease-in-out;
 }
 
 article {
@@ -60,6 +60,7 @@ section button {
 
 section article p {
     flex: 1;
+    font-size: 18px;
 }
 
 section form {
@@ -73,4 +74,9 @@ section form {
 
 section form input {
     margin: 0 3px;
+}
+
+section p {
+    margin: 5px;
+    font-size: 14px;
 }

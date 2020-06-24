@@ -123,3 +123,16 @@ listaRecursos();
 document
     .getElementById('formulario')
     .addEventListener('submit', adicionarTopico);
+
+let scrollTimeout;
+
+window.onscroll = function () {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        document.querySelector('header').className =
+            document.body.scrollTop >= 100 ||
+            document.documentElement.scrollTop >= 100
+                ? 'headerScroll'
+                : '';
+    }, 100);
+};
