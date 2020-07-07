@@ -128,10 +128,19 @@ let scrollTimeout;
 window.onscroll = () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
-        document.querySelector('header').className =
-            document.body.scrollTop >= 70 ||
-            document.documentElement.scrollTop >= 70
-                ? 'headerScroll'
-                : '';
+        const headerDOM = document.querySelector('header');
+        if (headerDOM.className === 'headerScroll') {
+            if (
+                document.body.scrollTop + 45 < 70 &&
+                document.documentElement.scrollTop + 45 < 70
+            )
+                headerDOM.className = '';
+        } else {
+            if (
+                document.body.scrollTop - 45 >= 70 ||
+                document.documentElement.scrollTop - 45 >= 70
+            )
+                headerDOM.className = 'headerScroll';
+        }
     }, 100);
 };
