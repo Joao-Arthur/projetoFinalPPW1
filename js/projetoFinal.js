@@ -10,7 +10,9 @@ function topicoToDom(topico) {
                 createDOMElement('p', { textContent: topico.conteudo }),
                 createDOMElement('button', {
                     textContent: '\u00D7',
+                    className: 'deletarTopico',
                     onClick: e =>
+                        confirm('tem certeza?') &&
                         deletarTopico(e, topico.idUsuario, topico.index)
                 })
             ]),
@@ -38,10 +40,21 @@ function topicoToDom(topico) {
 
 const comentariosToDom = comentarios =>
     comentarios.map(comentario =>
-        createDOMElement('p', {
-            textContent: comentario.conteudo,
-            id: comentario.idComentario
-        })
+        appendElements(
+            createDOMElement('section', { className: 'comentario' }),
+            [
+                createDOMElement('p', {
+                    textContent: new Date(
+                        comentario.idComentario
+                    ).toLocaleString(),
+                    className: 'informacoes'
+                }),
+                createDOMElement('p', {
+                    textContent: comentario.conteudo,
+                    id: comentario.idComentario
+                })
+            ]
+        )
     );
 
 const adicionarTopico = e => {
@@ -49,6 +62,7 @@ const adicionarTopico = e => {
     const topicoDOM = document.getElementById('topico');
     const topicoValue = topicoDOM.value;
     topicoDOM.value = '';
+    if (!topicoValue.trim()) return;
     const topico = Topico(110683, topicoValue);
     postRecurso(110683, topico).then(() => {
         totalRecursos++;
@@ -62,6 +76,7 @@ const adicionarComentario = (e, idUsuario, idRecurso) => {
     const comentarioDOM = e.target.parentNode.getElementsByTagName('input')[0];
     const comentarioValue = comentarioDOM.value;
     comentarioDOM.value = '';
+    if (!comentarioValue.trim()) return;
     const comentario = Comentario(idUsuario, idRecurso, 0, comentarioValue);
     postRecurso(idUsuario, comentario).then(() => {
         totalRecursos++;
@@ -114,8 +129,8 @@ window.onscroll = () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
         document.querySelector('header').className =
-            document.body.scrollTop >= 100 ||
-            document.documentElement.scrollTop >= 100
+            document.body.scrollTop >= 70 ||
+            document.documentElement.scrollTop >= 70
                 ? 'headerScroll'
                 : '';
     }, 100);

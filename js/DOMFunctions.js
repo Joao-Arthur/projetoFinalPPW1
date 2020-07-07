@@ -4,6 +4,7 @@ function createDOMElement(tagName, attributes = {}) {
     if (attributes.onClick) elemento.onclick = attributes.onClick;
     if (attributes.placeHolder) elemento.placeholder = attributes.placeHolder;
     if (attributes.id) elemento.id = attributes.id;
+    if (attributes.className) elemento.className = attributes.className;
     return elemento;
 }
 

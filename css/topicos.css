@@ -52,8 +52,23 @@ article {
     display: flex;
 }
 
+.deletarTopico {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #aaa;
+    height: 20px;
+    width: 20px;
+    color: #aaa;
+    background-color: white;
+}
+
+.deletarTopico:hover {
+    background-color: #aaa;
+    color: white;
+}
+
 section button {
-    padding: 5px;
+    padding: 5px 10px;
     margin: 0;
     height: 100%;
 }
@@ -79,4 +94,13 @@ section form input {
 section p {
     margin: 5px;
     font-size: 14px;
+}
+
+.comentario {
+    border: none;
+}
+
+.comentario .informacoes {
+    font-size: 0.7rem;
+    color: #555;
 }
