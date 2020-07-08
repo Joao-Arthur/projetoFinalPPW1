@@ -98,6 +98,7 @@ section p {
 
 .comentario {
     border: none;
+    padding: 10px 20px;
 }
 
 .comentario .informacoes {

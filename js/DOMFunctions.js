@@ -1,10 +1,8 @@
 function createDOMElement(tagName, attributes = {}) {
     const elemento = document.createElement(tagName);
-    if (attributes.textContent) elemento.textContent = attributes.textContent;
-    if (attributes.onClick) elemento.onclick = attributes.onClick;
-    if (attributes.placeHolder) elemento.placeholder = attributes.placeHolder;
-    if (attributes.id) elemento.id = attributes.id;
-    if (attributes.className) elemento.className = attributes.className;
+    Object.entries(attributes).forEach(
+        ([property, value]) => (elemento[property] = value)
+    );
     return elemento;
 }
 
@@ -14,6 +12,7 @@ function appendElementsContainer(elementoPai, container, elementos) {
 }
 
 function appendElements(elementoPai, elementos) {
+    console.log(elementoPai, elementos);
     elementos.forEach(elemento => elementoPai.appendChild(elemento));
     return elementoPai;
 }

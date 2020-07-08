@@ -11,18 +11,18 @@ function topicoToDom(topico) {
                 createDOMElement('button', {
                     textContent: '\u00D7',
                     className: 'deletarTopico',
-                    onClick: e =>
+                    onclick: e =>
                         confirm('tem certeza?') &&
                         deletarTopico(e, topico.idUsuario, topico.index)
                 })
             ]),
             appendElements(createDOMElement('form'), [
                 createDOMElement('input', {
-                    placeHolder: 'Adicione um comentário...'
+                    placeholder: 'Adicione um comentário...'
                 }),
                 createDOMElement('button', {
                     textContent: 'enviar',
-                    onClick: e =>
+                    onclick: e =>
                         adicionarComentario(
                             e,
                             topico.idUsuario,
@@ -41,7 +41,10 @@ function topicoToDom(topico) {
 const comentariosToDom = comentarios =>
     comentarios.map(comentario =>
         appendElements(
-            createDOMElement('section', { className: 'comentario' }),
+            createDOMElement('section', {
+                className: 'comentario',
+                id: comentario.idComentario
+            }),
             [
                 createDOMElement('p', {
                     textContent: new Date(
@@ -50,9 +53,27 @@ const comentariosToDom = comentarios =>
                     className: 'informacoes'
                 }),
                 createDOMElement('p', {
-                    textContent: comentario.conteudo,
-                    id: comentario.idComentario
-                })
+                    textContent: comentario.conteudo
+                }),
+                appendElements(
+                    createDOMElement('form', {
+                        onsubmit: e =>
+                            adicionarComentario(
+                                e,
+                                comentario.idUsuario,
+                                comentario.idTopico,
+                                comentario.idComentario
+                            )
+                    }),
+                    [
+                        createDOMElement('input', {
+                            placeholder: 'responder'
+                        }),
+                        createDOMElement('button', {
+                            textContent: 'responder'
+                        })
+                    ]
+                )
             ]
         )
     );
@@ -71,20 +92,30 @@ const adicionarTopico = e => {
     });
 };
 
-const adicionarComentario = (e, idUsuario, idRecurso) => {
+const adicionarComentario = (e, idUsuario, idRecurso, idComentarioPai = 0) => {
     e && e.preventDefault();
     const comentarioDOM = e.target.parentNode.getElementsByTagName('input')[0];
     const comentarioValue = comentarioDOM.value;
     comentarioDOM.value = '';
     if (!comentarioValue.trim()) return;
-    const comentario = Comentario(idUsuario, idRecurso, 0, comentarioValue);
+    const comentario = Comentario(
+        idUsuario,
+        idRecurso,
+        idComentarioPai,
+        comentarioValue
+    );
     postRecurso(idUsuario, comentario).then(() => {
         totalRecursos++;
         comentario.index = totalRecursos;
-        appendElements(
-            document.getElementById(comentario.idTopico),
-            comentariosToDom([comentario])
-        );
+        idComentarioPai
+            ? appendElements(
+                  document.getElementById(comentario.idComentarioPai),
+                  comentariosToDom([comentario])
+              )
+            : appendElements(
+                  document.getElementById(comentario.idTopico),
+                  comentariosToDom([comentario])
+              );
     });
 };
 
