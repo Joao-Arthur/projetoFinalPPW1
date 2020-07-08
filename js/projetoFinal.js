@@ -32,11 +32,33 @@ function topicoToDom(topico) {
             ]),
             appendElements(
                 createDOMElement('div', { id: topico.idTopico }),
-                topico.comentarios ? comentariosToDom(topico.comentarios) : []
+                topico.comentarios
+                    ? comentariosToTopico(topico.comentarios)
+                    : []
             )
         ].filter(Boolean)
     );
 }
+
+const comentariosToTopico = comentarios => {
+    const comentariosPai = comentarios.filter(
+        comentario => comentario.idComentarioPai === 0
+    );
+    const comentariosFilho = comentarios.filter(
+        comentario => comentario.idComentarioPai !== 0
+    );
+
+    return comentariosPai.map(comentarioPai => {
+        const filhos = comentariosFilho.filter(
+            comentario =>
+                comentario.idComentarioPai === comentarioPai.idComentario
+        );
+        return appendElements(
+            comentariosToDom([comentarioPai])[0],
+            comentariosToDom(filhos)
+        );
+    });
+};
 
 const comentariosToDom = comentarios =>
     comentarios.map(comentario =>

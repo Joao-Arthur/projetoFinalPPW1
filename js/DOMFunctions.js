@@ -12,7 +12,6 @@ function appendElementsContainer(elementoPai, container, elementos) {
 }
 
 function appendElements(elementoPai, elementos) {
-    console.log(elementoPai, elementos);
     elementos.forEach(elemento => elementoPai.appendChild(elemento));
     return elementoPai;
 }
