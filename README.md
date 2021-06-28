@@ -1,4 +1,4 @@
-# Projeto_PPW1
+# Projeto Final PPW1
 Mini-forum web utilizando API disponibilizada pelo professor.
 
 ## Sobre o projeto
